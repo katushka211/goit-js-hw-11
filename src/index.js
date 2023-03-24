@@ -54,7 +54,7 @@ async function getImages(searchImage) {
         `"Sorry, there are no images matching your search query. Please try again."`
       );
     }
-    if (response.data.hits.length < 40) {
+    if (response.data.hits.length < 40 && response.data.hits.length > 0) {
       refs.loadMoreBtn.style.display = 'none';
       Notiflix.Notify.info(
         "We're sorry, but you've reached the end of search results."
