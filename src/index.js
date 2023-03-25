@@ -18,7 +18,7 @@ refs.loadMoreBtn.addEventListener('click', onLoadMoreBtnClick);
 
 function onSearch(event) {
   event.preventDefault();
-  const searchImage = refs.input.value;
+  const searchImage = refs.input.value.trim();
   //   console.log(searchImage);
   refs.gallery.innerHTML = '';
   page = 1;
@@ -53,6 +53,7 @@ async function getImages(searchImage) {
       Notiflix.Notify.failure(
         `"Sorry, there are no images matching your search query. Please try again."`
       );
+      refs.loadMoreBtn.style.display = 'none';
     }
     if (response.data.hits.length < 40 && response.data.hits.length > 0) {
       refs.loadMoreBtn.style.display = 'none';
@@ -103,7 +104,7 @@ const simpleLightbox = new SimpleLightbox('.gallery a', {
 
 function onLoadMoreBtnClick(event) {
   event.preventDefault();
-  const searchImage = refs.input.value;
+  const searchImage = refs.input.value.trim();
   page += 1;
   getImages(searchImage);
 }
