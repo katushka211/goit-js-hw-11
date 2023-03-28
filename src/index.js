@@ -63,7 +63,7 @@ async function getImages(searchImage) {
     }
 
     createGallery(response.data);
-    smoothScroll();
+    // smoothScroll();
   } catch (error) {
     console.log(error);
   }
@@ -95,6 +95,9 @@ function createGallery(array) {
     .join('');
   refs.gallery.insertAdjacentHTML('beforeend', markup);
   simpleLightbox.refresh();
+  if (page > 1) {
+    smoothScroll();
+  }
 }
 
 const simpleLightbox = new SimpleLightbox('.gallery a', {
